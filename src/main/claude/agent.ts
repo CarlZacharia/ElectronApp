@@ -147,10 +147,11 @@ export async function runClaudeAgent(
   mode: AgentMode,
   apiKey: string,
   callbacks: AgentCallbacks,
-  signal?: AbortSignal
+  signal?: AbortSignal,
+  systemOverride?: string
 ): Promise<void> {
   const client = new Anthropic({ apiKey })
-  const system = mode === 'agent' ? AGENT_SYSTEM : CHAT_SYSTEM
+  const system = systemOverride ?? (mode === 'agent' ? AGENT_SYSTEM : CHAT_SYSTEM)
   const tools = mode === 'agent' ? TOOLS : []
 
   let history = [...messages]

@@ -54,10 +54,10 @@ const PERSON_FIELDS = (prefix: string, label: string): FormField[] => [
 const WITNESS_FIELDS: FormSection = {
   title: 'Witnesses',
   fields: [
-    { id: 'witness_1_name', label: 'Witness 1 Printed Name', type: 'text', required: true },
-    { id: 'witness_1_address', label: 'Witness 1 Address', type: 'text', required: true },
-    { id: 'witness_2_name', label: 'Witness 2 Printed Name', type: 'text', required: true },
-    { id: 'witness_2_address', label: 'Witness 2 Address', type: 'text', required: true }
+    { id: 'witness_1_name', label: 'Witness 1 Printed Name', type: 'text' },
+    { id: 'witness_1_address', label: 'Witness 1 Address', type: 'text' },
+    { id: 'witness_2_name', label: 'Witness 2 Printed Name', type: 'text' },
+    { id: 'witness_2_address', label: 'Witness 2 Address', type: 'text' }
   ]
 }
 
@@ -394,8 +394,8 @@ export const FORMS: FormDefinition[] = [
       {
         title: 'Witnesses',
         fields: [
-          { id: 'witness_1_name', label: 'Witness 1 Printed Name', type: 'text', required: true, hint: 'Cannot be agent or agent\'s relative' },
-          { id: 'witness_2_name', label: 'Witness 2 Printed Name', type: 'text', required: true }
+          { id: 'witness_1_name', label: 'Witness 1 Printed Name', type: 'text', hint: 'Cannot be agent or agent\'s relative' },
+          { id: 'witness_2_name', label: 'Witness 2 Printed Name', type: 'text' }
         ]
       },
       NOTARY_FIELDS,
@@ -436,7 +436,7 @@ FORMS.push(
           { id: 'dnr_preference', label: 'DNR preference', type: 'select' as const, options: [{ value: 'not_addressed', label: 'Not addressed' }, { value: 'dnr', label: 'Do Not Resuscitate' }, { value: 'full_code', label: 'Full resuscitation' }] }
         ]
       },
-      { title: 'Witnesses', fields: [{ id: 'witness_1_name', label: 'Witness 1 Printed Name', type: 'text' as const, required: true }, { id: 'witness_2_name', label: 'Witness 2 Printed Name (must be non-relative)', type: 'text' as const, required: true }] },
+      { title: 'Witnesses', fields: [{ id: 'witness_1_name', label: 'Witness 1 Printed Name', type: 'text' as const }, { id: 'witness_2_name', label: 'Witness 2 Printed Name (must be non-relative)', type: 'text' as const }] },
       NOTARY_FIELDS, OUTPUT_FIELDS
     ]
   },
@@ -458,7 +458,7 @@ FORMS.push(
           { id: 'organ_donation', label: 'Organ donation', type: 'select' as const, options: [{ value: 'not_addressed', label: 'Not addressed' }, { value: 'yes_any', label: 'Yes — any needed organs' }, { value: 'no', label: 'No' }] }
         ]
       },
-      { title: 'Witnesses', fields: [{ id: 'witness_1_name', label: 'Witness 1 Printed Name', type: 'text' as const, required: true, hint: 'Cannot be agent, agent\'s relative, or principal\'s heir' }, { id: 'witness_2_name', label: 'Witness 2 Printed Name', type: 'text' as const, required: true }] },
+      { title: 'Witnesses', fields: [{ id: 'witness_1_name', label: 'Witness 1 Printed Name', type: 'text' as const, hint: 'Cannot be agent, agent\'s relative, or principal\'s heir' }, { id: 'witness_2_name', label: 'Witness 2 Printed Name', type: 'text' as const }] },
       NOTARY_FIELDS, OUTPUT_FIELDS
     ]
   },
@@ -522,7 +522,7 @@ FORMS.push(
       { title: 'Children', fields: [{ id: 'children', label: 'Children', type: 'repeater' as const, fields: [{ id: 'name', label: 'Full Name', type: 'text' as const }, { id: 'dob', label: 'Date of Birth', type: 'date' as const }] }] },
       { title: 'Executor', fields: [...PERSON_FIELDS('executor', 'Executor'), { id: 'executor_relationship', label: 'Relationship to Testator', type: 'text' as const }, { id: 'alt_executor_name', label: 'Alternate Executor Name', type: 'text' as const }] },
       { title: 'Bequests', fields: [{ id: 'specific_bequests', label: 'Specific Bequests', type: 'repeater' as const, fields: [{ id: 'description', label: 'Item/Amount', type: 'text' as const }, { id: 'beneficiary', label: 'Beneficiary', type: 'text' as const }] }, { id: 'residuary_beneficiary', label: 'Residuary Beneficiary', type: 'text' as const, required: true }, { id: 'alternate_residuary', label: 'Alternate Residuary', type: 'text' as const }, { id: 'pour_over_trust', label: 'Pour-over to revocable trust?', type: 'checkbox' as const }, { id: 'trust_name', label: 'Trust Name', type: 'text' as const, dependsOn: { field: 'pour_over_trust', value: true } }] },
-      { title: 'Witnesses', fields: [{ id: 'witness_1_name', label: 'Witness 1 Printed Name', type: 'text' as const, required: true }, { id: 'witness_2_name', label: 'Witness 2 Printed Name', type: 'text' as const, required: true }] },
+      { title: 'Witnesses', fields: [{ id: 'witness_1_name', label: 'Witness 1 Printed Name', type: 'text' as const }, { id: 'witness_2_name', label: 'Witness 2 Printed Name', type: 'text' as const }] },
       NOTARY_FIELDS, OUTPUT_FIELDS
     ]
   }

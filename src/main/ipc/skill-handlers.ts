@@ -81,7 +81,9 @@ export function registerSkillHandlers(
           onError: (error) => {
             win.webContents.send('claude:error', { error, sessionId })
           }
-        }
+        },
+        undefined,  // signal
+        systemPrompt  // pass the skill template as system prompt
       )
     } catch (err) {
       const message = err instanceof Error ? err.message : String(err)

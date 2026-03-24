@@ -19,6 +19,9 @@ export default function FormsPage() {
   const [selectedSkill, setSelectedSkill] = useState<SkillMeta | null>(null)
   const { isRunning, messages, streamingText } = useAppStore()
 
+  // Register IPC listeners for claude:text, claude:error, etc.
+  useClaude()
+
   const filteredSkills = selectedCategory
     ? SKILLS.filter(s => s.category === selectedCategory && FORMS.find(f => f.skillId === s.id))
     : SKILLS.filter(s => FORMS.find(f => f.skillId === s.id))

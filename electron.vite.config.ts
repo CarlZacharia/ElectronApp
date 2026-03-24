@@ -7,6 +7,11 @@ export default defineConfig({
     plugins: [externalizeDepsPlugin()],
     resolve: {
       alias: { '@main': resolve('src/main') }
+    },
+    server: {
+      watch: {
+        ignored: ['**/src/skills/**']
+      }
     }
   },
   preload: {
